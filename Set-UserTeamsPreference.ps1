@@ -7,8 +7,8 @@ This script will change the the users Teams configuration file, so the client be
 .EXAMPLE
 Run the script as is, to set defaults
 .EXAMPLE
-Make teams start minimized to systray
-Set-UserTeamsPreference.ps1 -openAsHidden
+Make teams start minimized to systray and register as an IM provider
+Set-UserTeamsPreference.ps1 -openAsHidden -registerAsIMProvider
 .NOTES
 NAME: Set-UserTeamsPreference.ps1
 VERSION: 1906a
