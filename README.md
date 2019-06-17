@@ -2,7 +2,7 @@
 
 A PowerShell script to modify a users preferences in the Microsoft Teams Desktop Client.
 
-* Thanks go out to James Rankin https://james-rankin.com/articles/microsoft-teams-on-citrix-xenapp/ for the code inspiration. *
+*Thanks go out to James Rankin https://james-rankin.com/articles/microsoft-teams-on-citrix-xenapp/ for the code inspiration.*
 
 ## Usage
 
@@ -26,7 +26,7 @@ So that you don't have to repackage the script each time you want to change pref
 You will need to set a dependecy rule that ensures that Teams is installed as the user before installation.
 As this script will fail if the configuration file is not present in "%APPDATA%\Microsoft\Teams\desktop-config.json"
 
-You could also make a custom Teams installer script which runs the script after installation of the client.
+*You could also make a custom Teams installer script which runs the script after installation of the client.*
 
 A transcript is saved to the users TEMP folder, for easier debugging than the Intune logs.
 "%TEMP%\Set-UserTeamsPreference_Script-log.txt"
