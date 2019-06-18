@@ -41,7 +41,13 @@ $configFile = "$ENV:APPDATA\Microsoft\Teams\desktop-config.json"
 
 # Load the file data into a variable
 Write-Verbose "Fetching the contents of $configFile"
-$fileBuffer = Get-Content $configFile
+try {
+    $fileBuffer = Get-Content $configFile -ErrorAction Stop
+} 
+catch {
+    throw "Could not fetch the users Teams config file! Make sure Teams is installed!"
+    Stop-Transcript
+}
 
 ### Modifying the variable so Teams beahves as dictated by the specified commandline parameters (or lack thereof)
 
