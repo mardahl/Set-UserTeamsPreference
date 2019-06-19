@@ -13,6 +13,8 @@ Set-UserTeamsPreference.ps1 -openAsHidden -registerAsIMProvider
 NAME: Set-UserTeamsPreference.ps1
 VERSION: 1906a
 PREREQ:  Make sure Teams is installed as the user before running!
+BUGS: 
+RegisterAsIMProvider switch only works to disable, not enable it seems.
 Coded for readability!
 .COPYRIGHT
 @michael_mardahl / https://www.iphase.dk
@@ -33,7 +35,7 @@ PARAM(
 Start-Transcript -Path "$env:TEMP\Set-UserTeamsPreference_Script-log.txt"
 Write-Output "Modifying the users Teams client..."
 
-# Enabling verbose output for our log
+# Enabling verbose output for our log 
 $VerbosePreference = "Continue"
 
 # The users Teams configuration file
@@ -53,37 +55,37 @@ catch {
 
 # Hidden option
 if($openAsHidden) {
-    Write-Output '1 - Enabling the "openAsHidden" option...'
+    Write-Verbose '1 - Enabling the "openAsHidden" option...'
     $fileBuffer = $fileBuffer -replace '"openAsHidden":false', '"openAsHidden":true'
 } else { 
-    Write-Output '1 - Disabling the "openAsHidden" option...'
+    Write-Verbose '1 - Disabling the "openAsHidden" option...'
     $fileBuffer = $fileBuffer -replace '"openAsHidden":true', '"openAsHidden":false'
 }
 
 # Autostart option
 if($disableAutoStart) {
-    Write-Output '2 - Disabling the "openAtLogin" option...'
+    Write-Verbose '2 - Disabling the "openAtLogin" option...'
     $fileBuffer = $fileBuffer -replace '"openAtLogin":true', '"openAtLogin":false'
 } else { 
-    Write-Output '2 - Enabling the "openAtLogin" option...'
+    Write-Verbose '2 - Enabling the "openAtLogin" option...'
     $fileBuffer = $fileBuffer -replace '"openAtLogin":false', '"openAtLogin":true'
 }
 
 # IM Provider option
 if($registerAsIMProvider) {
-    Write-Output '3 - Enabling the "registerAsIMProvider" option...'
+    Write-Verbose '3 - Enabling the "registerAsIMProvider" option...'
     $fileBuffer = $fileBuffer -replace '"registerAsIMProvider":false', '"registerAsIMProvider":true'
 } else {
-    Write-Output '3 - Disabling the "registerAsIMProvider" option...'
+    Write-Verbose '3 - Disabling the "registerAsIMProvider" option...'
     $fileBuffer = $fileBuffer -replace '"registerAsIMProvider":true', '"registerAsIMProvider":false'
 }
 
 # Program close behaviour option
 if($exitOnClose) {
-    Write-Output '4 - Disabling the "runningOnClose" option...'
+    Write-Verbose '4 - Disabling the "runningOnClose" option...'
     $fileBuffer = $fileBuffer -replace '"runningOnClose":true', '"runningOnClose":false'
 } else {
-    Write-Output '4 - Enabling the "runningOnClose" option...'
+    Write-Verbose '4 - Enabling the "runningOnClose" option...'
     $fileBuffer = $fileBuffer -replace '"runningOnClose":false', '"runningOnClose":true'
 }
 
