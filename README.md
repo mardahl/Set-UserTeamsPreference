@@ -15,7 +15,7 @@ This script works by accepting commandline switches, defining a switch enforces 
 - registerAsIMProvider
 -- Registers the Teams Client as an Instant Message client
 - exitOnClose
--- Exists the teams client on closing the window, instead of running it in the background
+-- Exits the teams client on closing the window, instead of running it in the background
 
 
 # Deploy with Intune
